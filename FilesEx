@@ -1,0 +1,14 @@
+#10.14. Exercises
+# №3 Create a list called j_emotions that contains every word in emotion_words.txt that begins with the letter “j”.
+  data = open("emotion_words.txt", "r")
+  j_emotions = []
+
+  for words in data.readlines():
+      splwords = words.split(" ")
+      for subs in splwords:
+          if 'j' in subs:
+              j_emotions.append(subs)
+              print (j_emotions)
+
+
+  data.close()
