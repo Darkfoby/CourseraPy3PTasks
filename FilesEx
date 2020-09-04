@@ -1,4 +1,20 @@
 #10.14. Exercises
+# №2 Create a list called destination using the data stored in travel_plans.txt. 
+# Each element of the list should contain a line from the file that lists a country and cities inside that country. 
+  data = open("travel_plans.txt", "r")
+
+  destination = []
+
+  for i in data.readlines():
+      if ':' in i:
+          destination.append(i)
+  print (destination)
+
+
+
+
+
+
 # №3 Create a list called j_emotions that contains every word in emotion_words.txt that begins with the letter “j”.
   data = open("emotion_words.txt", "r")
   j_emotions = []
