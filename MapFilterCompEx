@@ -119,3 +119,10 @@
       
       
 # 12.Write a function called longlengths that returns the lengths of those strings that have at least 4 characters. Try it using map and filter.
+
+  def longlengths(strings):
+      lenlist = []
+      new_list = filter(lambda x: len(x) > 4, strings)
+      for i in new_list:
+          lenlist.append(len(i))
+      return lenlist
