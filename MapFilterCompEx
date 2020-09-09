@@ -1,0 +1,121 @@
+23.6. Exercises
+
+# 1.Write equivalent code using map instead of the manual accumulation below and assign it to the variable test.
+
+  things = [3, 5, -4, 7]
+
+  accum = []
+  for thing in things:
+      accum.append(thing+1)
+  print(accum)
+
+  test = map(lambda x: x + 1, things)
+
+  print (test)
+  
+  
+# 2.Use manual accumulation to define the lengths function below.
+
+  def lengths(strings):
+      """lengths takes a list of strings as input and returns a list of numbers that are the lengths
+      of strings in the input list. Use manual accumulation!"""
+      # fill in this function's definition to make the test pass.
+      new_list = []
+    
+      for i in strings:
+          new_list.append(len(i))
+      return new_list
+      
+  
+ # 3.Now define lengths using map instead.
+ 
+    def lengths(strings):
+      new_list = map(lambda x: len(x), strings)
+      return list(new_list)
+      
+      """lengths takes a list of strings as input and returns a list of numbers that are the lengths
+      of strings in the input list. Use map!"""
+      # fill in this function's definition to make the test pass.
+      
+      
+ # 4.Now define lengths using a list comprehension instead.
+ 
+  def lengths(strings):
+      new_list = [len(x) for x in strings]
+      return new_list
+      """lengths takes a list of strings as input and returns a list of numbers that are the lengths
+      of strings in the input list. Use a list comprehension!"""
+      # fill in this function's definition to make the test pass.
+
+
+# 5.Write a function called positives_Acc that receives list of numbers as the input (like [3, -1, 5, 7])
+#and returns a list of only the positive numbers, [3, 5, 7], via manual accumulation.
+
+  things = [3, 5, -4, 7]
+
+  def positives_Acc(lst):
+      new_list = []
+      for i in lst:
+          if i > 0:
+              new_list.append(i)
+      return new_list
+      
+      
+# 6.Write a function called positives_Fil that receives list of things as the input
+#and returns a list of only the positive things, [3, 5, 7], using the filter function.
+
+  things = [3, 5, -4, 7]
+
+  def positives_Fil(lst):
+      new_list = filter(lambda x: x > 0, lst)
+      return list(new_list)
+      
+    
+# 7.Write a function called positives_Li_Com that receives list of things
+#as the input and returns a list of only the positive things, [3, 5, 7], using the list comprehension.
+
+  things = [3, 5, -4, 7]
+
+  def positives_Li_Com(lst):
+      new_list = [x for x in lst if x > 0]
+      return new_list
+      
+      
+# 8.Define longwords using manual accumulation.
+  def longwords(strings):
+     """Return a shorter list of strings containing only the strings with more than four characters. Use manual accumulation."""
+      # write your code here
+     new_list = []
+     for i in strings:
+          if len(i) > 4:
+              new_list.append(i)
+     return new_list
+     
+     
+# 9.Define longwords using filter.
+
+  def longwords_Fil(strings):
+      new_list = filter(lambda x: len(x) > 4, strings)
+      return list(new_list)
+      
+      """Return a shorter list of strings containing only the strings with more than four characters. Use the filter function."""
+      # write your code here
+      
+      
+# 10.Define longwords using a list comprehension.
+
+  def longwords_Li_Comp(strings):
+      new_list = [x for x in strings if len(x) > 4]
+      return new_list
+      """Return a shorter list of strings containing only the strings with more than four characters. Use a list comprehension."""
+      # write your code here
+
+
+# 11.Write a function called longlengths that returns the lengths of those strings that have at least 4 characters. Try it with a list comprehension.
+
+  def longlengths(strings):
+      new_list = [len(x) for x in strings if len(x) >= 4]
+      return new_list
+      
+      
+# 12.Write a function called longlengths that returns the lengths of those strings that have at least 4 characters. Try it using map and filter.
