@@ -21,7 +21,6 @@ def get_movies_from_tastedive(quer):
     params_dict["type"] = "movies"
     params_dict["limit"] = 5
     tastedive_resp = requests_with_caching.get(baseurl, params = params_dict, permanent_cache_file="permanent_cache.txt")
-    #print (tastedive_resp.url)
     return tastedive_resp.json()
 
 def extract_movie_titles(fdic):
@@ -50,7 +49,6 @@ def get_movie_data(title):
     params_dict["t"] = title
     params_dict["r"] = "json"
     resp_omdb = requests_with_caching.get(baseurl, params = params_dict, permanent_cache_file = "permanent_cache.txt")
-    #print (resp_omdb.url)
     return resp_omdb.json()
     
     
@@ -75,7 +73,6 @@ def get_sorted_recommendations(titlelst):
             interlst = get_movie_data(b) #extracting data
             ratinglst = get_movie_rating(interlst) #extracting rating
             r_list.append(ratinglst)
-    #print (simlst, r_list)
     mrating = list(zip(simlst, r_list))
     rating = sorted(mrating, key = lambda x: (x[1], x), reverse = True)
     print (rating)
