@@ -1,4 +1,4 @@
-10.15. Chapter Assessment
+10.15. Diff Exercises
 
 #Read in the contents of the file SP500.txt which has monthly data for 2016 and 2017
 #about the S&P 500 closing prices as well as some other financial indicators, 
@@ -27,3 +27,15 @@
 
   print (mean_SP, max_interest)
 
+#Challenge For each word in words, add ‘d’ to the end of the word if the word ends in “e” to make it past tense. 
+#Otherwise, add ‘ed’ to make it past tense. Save these past tense words to a list called past_tense.
+
+words = ["adopt", "bake", "beam", "confide", "grill", "plant", "time", "wave", "wish"]
+
+past_tense = []
+for i in words:
+    if(i[len(i)-1] == 'e'):
+        i += 'd'
+    else:
+        i += 'ed'
+    past_tense.append(i)
