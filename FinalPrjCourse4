@@ -1,0 +1,92 @@
+import random
+
+VOWEL_COST = 250
+LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+VOWELS = 'AEIOU'
+
+# Write the WOFPlayer class definition (part A) here
+class WOFPlayer:
+    def __init__(self, name):
+        self.name = name
+        self.prizeMoney = 0
+        self.prizes = []
+    def addMoney(self, amt):
+        self.prizeMoney += amt
+    def goBankrupt(self):
+        self.prizeMoney = 0
+    def addPrize(self, prize):
+        return (self.prizes.append(prize))
+    def __str__(self):
+        return "{} (${})" .format(self.name, self.prizeMoney)
+# Write the WOFHumanPlayer class definition (part B) here
+class WOFHumanPlayer(WOFPlayer):
+    def __init__(self, name):
+        WOFPlayer.__init__(self, name)
+        self.prizeMoney = 0
+        self.prizes = []
+    def addMoney(self, amt):
+        self.prizeMoney += amt
+    def goBankrupt(self):
+        self.prizeMoney = 0
+        return self.prizeMoney
+    def addPrize(self, prize):
+        return (self.prizes.append(prize))
+    def getMove(self, category, obscuredPhrase, guessed):
+        print ('''
+        {} has ${}
+        
+        Category: {}
+        Phrase: []
+        Guessed: []
+        
+        Guess a letter, phrase, or type 'exit' or 'pass':
+        ''' .format(self.name, self.prizeMoney, category, obscuredPhrase, guessed))
+               
+        guess = input("Make a guess:" )
+
+# Write the WOFComputerPlayer class definition (part C) here
+class WOFComputerPlayer(WOFPlayer):
+    
+    SORTED_FREQUENCIES = 'ZQXJKVBPYGFWMUCLDRHSNIOATE'
+    
+    def __init__(self, name, difficulty):
+        WOFPlayer.__init__(self, name)
+        self.difficulty = difficulty
+        self.prizeMoney = 0
+        self.prizes = []
+
+    def addMoney(self, amt):
+        self.prizeMoney += amt
+    def goBankrupt(self):
+        self.prizeMoney = 0
+        return self.prizeMoney
+    def addPrize(self, prize):
+        return (self.prizes.append(prize))
+    def smartCoinFlip(self):
+        rand = random.randint(1, 10)
+        if rand > self.difficulty:
+            return True
+        elif rand <= self.difficulty:
+            return False
+    def getPossibleLetters(self, guessed):
+        lst_let = []
+        for i in LETTERS:
+            if self.prizeMoney < VOWEL_COST:
+                if i not in guessed and i not in VOWELS:
+                    lst_let.append(i)
+            else:
+                if i not in guessed:
+                    lst_let.append(i)
+        return lst_let
+    def getMove(self, category, obscuredPhrase, guessed):
+            pos_let = self.getPossibleLetters(guessed)
+            if not pos_let:
+                return "pass"
+            else:
+                if self.smartCoinFlip():
+                    for letter in self.SORTED_FREQUENCIES[::-1]:
+                        if letter in pos_let:
+                            return letter
+                else:
+                    return random.choice(pos_let)
+    
